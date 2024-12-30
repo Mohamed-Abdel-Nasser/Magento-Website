@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info">
+    <properties>
+        <property name="consolePattern">%highlight{%d{HH:mm:ss} [%t] [%-5level]: %msg %throwable{short.fileName}
+            %throwable{short.methodName}}
+        </property>
+        <property name="filePattern">%d{HH:mm:ss} [%t] [%-5level]: %msg %throwable{short.fileName}
+            %throwable{short.methodName}
+        </property>
+        <property name="filePath">test_output/output/logs/</property>
+        <property name="filePathPattern">%d{dd MMM yyyy HH:mm:ss}</property>
+    </properties>
+    <Appenders>
+        <console name="console log" target="SYSTEM_OUT">
+            <PatternLayout pattern="${consolePattern}"/>
+        </console>
+        <RollingFile name="my file" fileName="${filePath}MainLog.log" filePattern="${filePath}${filePathPattern}.log">
+            <PatternLayout pattern="${filePattern}"/>
+            <!--<LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/> -->
+            <SizeBasedTriggeringPolicy size="10MB"></SizeBasedTriggeringPolicy>
+            <DefaultRolloverStrategy max="3">
+                <Delete basePath="${filePath}" maxDepth="3">
+                    <!-- Delete all files older than 30 days -->
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <RollingFile name="my logs" fileName="${filePath}/testLogs/myLogs.log"
+                     filePattern="${filePath}/testLogs/${filePathPattern}.log">
+            <PatternLayout pattern="${filePattern}"/>
+            <SizeBasedTriggeringPolicy size="10MB"></SizeBasedTriggeringPolicy>
+            <DefaultRolloverStrategy max="3">
+                <Delete basePath="${filePath}" maxDepth="3">
+                    <!-- Delete all files older than 30 days -->
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="logger" level="info" additivity="false">
+            <AppenderRef ref="my file"/>
+            <AppenderRef ref="console log"/>
+            <AppenderRef ref="my logs"/>
+        </Logger>
+        <Root level="info" additivity="false">
+            <appender-ref ref="my file"/>
+            <AppenderRef ref="console log"/>
+        </Root>
+    </Loggers>
+</configuration>

@@ -1,0 +1,4 @@
+2024-12-26 06:59:07 [main] [INFO ]: ChromeDriver: chrome on windows (c8e6854152f4245bd00b3786afd6983e)
+2024-12-26 06:59:07 [main] [INFO ]: Page objects initialized successfully.
+2024-12-26 06:59:07 [main] [INFO ]: Number of matching rows: 1
+2024-12-26 06:59:07 [main] [INFO ]: starting test: assertFilters

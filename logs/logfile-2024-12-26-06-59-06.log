@@ -1,0 +1,6 @@
+2024-12-26 06:59:06 [main] [INFO ]: Logger initialized successfully with configuration from: src/main/resources/properties/log4j2.xml
+2024-12-26 06:59:06 [main] [INFO ]: Deleted the file test_output/output/logs/MainLog.log
+2024-12-26 06:59:06 [main] [INFO ]: Deleted the directory allure-results/
+2024-12-26 06:59:06 [main] [INFO ]: Initializing Chrome WebDriver.
+2024-12-26 06:59:06 [main] [INFO ]: Initializing Chrome WebDriver.
+2024-12-26 06:59:06 [main] [INFO ]: Starting Chrome browser with options: [--start-maximized]
